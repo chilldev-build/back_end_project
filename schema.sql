@@ -1,6 +1,11 @@
 --CREATE DATABASE backendproject
 --\c backendproject
 
+--I added a user in PSQL called backend with no password so that we can
+--have the same code in github and run on our local system with no problem
+
+
+
 CREATE TABLE company (
    id SERIAL PRIMARY KEY,
    cid VARCHAR(6) UNIQUE, --defined on new client acquisition
