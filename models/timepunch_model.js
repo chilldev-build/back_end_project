@@ -6,6 +6,8 @@ class TimeSheet{
         this.eid = eid;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.starttime = starttime;
+        this.endtime = endtime; 
     }
 
     static async getAll(){
@@ -31,6 +33,17 @@ class TimeSheet{
             return error.message;
         }
 
+    }
+    async addStartTime (starttime){
+
+        try{
+            const response = await db.one(`INSERT INTO time_punch(id, starttime, endtime, worktype) VALUES (55567, ${starttime}, Sales);`)
+            console.log(response);
+            return response;
+        }
+        catch(err){
+            return err.message; 
+        }
     }
     
 }

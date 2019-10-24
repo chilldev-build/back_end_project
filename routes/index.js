@@ -36,8 +36,18 @@ router.get("/:time_id", async (req,res,next)=> {
       
      },
       partials:{
-        partial : "partial-Time-app"
+        partial : "partial-employee"
       }
   });
 });
+
+router.post("/time", async (req,res) =>{
+     
+  const {starttime} = req.body;
+  const startTimeInstance = new timeModel(starttime);
+  const employeeStart = await startTimeInstance.addStartTime();
+  console.log(employeeStart);
+
+})
+
 module.exports = router;
