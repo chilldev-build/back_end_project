@@ -8,9 +8,9 @@
 
 CREATE TABLE company (
    id SERIAL PRIMARY KEY,
-   cid VARCHAR(6) UNIQUE, --defined on new client acquisition
+   cid constCHAR(6) UNIQUE, --defined on new client acquisition
    name TEXT NOT NULL,
-   location VARCHAR(50)
+   location constCHAR(50)
 );
 
 CREATE TABLE time_punch (
@@ -24,12 +24,12 @@ CREATE TABLE time_punch (
 
 CREATE TABLE employee (
     id SERIAL PRIMARY KEY REFERENCES company(id) on DELETE CASCADE,
-    eid VARCHAR(4) NOT NULL, --this is co specified
-    co_cid VARCHAR(6),
+    eid constCHAR(4) NOT NULL, --this is co specified
+    co_cid constCHAR(6),
     t_id INT REFERENCES time_punch(id), 
     firstname TEXT NOT NULL,
     lastname TEXT NOT NULL,
-    password VARCHAR(20)
+    password constCHAR(20)
 );
 
 
