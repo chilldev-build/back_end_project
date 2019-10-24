@@ -1,18 +1,34 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan'),
+es6Renderer = require('express-es6-template-engine'),
+session = require("express-session"),
+FIleStore = require("session-file-store")(session);
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+require('dotenv').config();
 
-var app = express();
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
+const app = express();
+
+app.engine("html", es6Renderer);
+app.set('views', './views');
+app.set("view engine" ,"html");
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    store: new FIleStore(),
+    secret: "get rad",
+    resave: false,
+    saveUninitialized: true,
+    is_logged_in: false
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
