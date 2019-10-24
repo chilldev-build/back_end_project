@@ -9,7 +9,7 @@ CREATE TABLE company (
 CREATE TABLE employee (
     id SERIAL PRIMARY KEY,
     eid VARCHAR NOT NULL, 
-    co_cid INTEGER REFERENCES company(id) on DELETE CASCADE, 
+    co_cid VARCHAR REFERENCES company(id) on DELETE CASCADE, 
     t_id INTEGER REFERENCES time_punch(id), 
     firstname TEXT NOT NULL,
     lastname TEXT NOT NULL,
