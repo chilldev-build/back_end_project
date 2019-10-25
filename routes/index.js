@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const timeModel = require("../models/timepunch_model");
+const moment = require('moment');
 
 
 /* GET home page. */
@@ -43,10 +44,18 @@ router.get("/:time_id", async (req,res,next)=> {
 
 router.post("/add", async (req, res) =>{
   let { starttime } = req.body;
+  starttime = moment().format("YYYY-M-D  H:m:ss")
+  const time_Instance = new timeModel(starttime);
+  const timeIn = await time_Instance.addStartTime();
+  console.log(timeIn)
+ 
+ 
+ 
+  /*  let { starttime } = req.body;
   console.log(req.body);
   const time_Instance = new timeModel(starttime);
   const timeIn = await time_Instance.addStartTime();
-  console.log("this is a test", timeIn);
+  console.log("this is a test", timeIn); */
   
   
 });
