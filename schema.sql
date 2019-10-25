@@ -47,6 +47,16 @@ INSERT INTO time_punch (eeid, starttime, endtime, active) VALUES
 (1, '2019-10-27 10:00:00', '2019-10-27 14:05:30',FALSE);
 
 
+CREATE TABLE team(
+    id SERIAL PRIMARY KEY,
+    employee text,
+    time_id INT REFERENCES time_punch(id),
+    lastworkedon text,
+    activity VARCHAR,
+    totalhoursperweek VARCHAR
+
+);
+
 
 
 
