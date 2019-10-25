@@ -35,7 +35,15 @@ app.use(session({
     is_logged_in: false
 }));
 
-//app.use('/', indexRouter);
+
+app.use(function(req, res, next) {
+    if (req.originalUrl && req.originalUrl.split("/").pop() === "favicon.ico") {
+        return res.sendStatus(204);
+    }
+    return next();
+});
+
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/team',teamRouter);
 app.use('/me',chartRouter);
