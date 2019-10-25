@@ -6,6 +6,7 @@ es6Renderer = require('express-es6-template-engine'),
 session = require("express-session"),
 FIleStore = require("session-file-store")(session);
 
+
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
@@ -29,6 +30,14 @@ app.use(session({
     saveUninitialized: true,
     is_logged_in: false
 }));
+
+
+app.use(function(req, res, next) {
+    if (req.originalUrl && req.originalUrl.split("/").pop() === "favicon.ico") {
+        return res.sendStatus(204);
+    }
+    return next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

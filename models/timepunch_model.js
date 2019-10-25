@@ -1,12 +1,12 @@
 const db = require('./conn');
 
 class TimeSheet{
-    constructor(id,eid,firstname,lastname){
+    constructor(starttime , id,eid,firstname,lastname,  endtime){
+        this.starttime = starttime;
         this.id = id;
         this.eid = eid;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.starttime = starttime;
         this.endtime = endtime; 
     }
 
@@ -34,11 +34,21 @@ class TimeSheet{
         }
 
     }
-    async addStartTime (starttime){
-
+     async addStartTime(){
         try{
-            const response = await db.one(`INSERT INTO time_punch(id, starttime, endtime, worktype) VALUES (55567, ${starttime}, Sales);`)
-            console.log(response);
+            const response = await db.result(
+                `insert into time_punch
+                 ( starttime, 
+                    endtime,
+                     worktype, 
+                     hours, 
+                     week) 
+                   values 
+                   ( '${this.starttime}', 
+                    '2016-06-22 19:10:25-07', 
+                    'eco-centric', 
+                    '20.5', '20.5');`
+            )
             return response;
         }
         catch(err){

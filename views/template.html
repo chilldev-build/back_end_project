@@ -4,18 +4,20 @@
     <title>TimeSheet App | ${title}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel ="stylesheet" href ="../public/stylesheets/style.css">
+    <link rel ="stylesheet" href ="./stylesheets/style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/af.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class ="menu ---main">
-        <ul>
+        <!-- <ul>
             ${!!isLoggedIn ? `
             <li><a href ="/users/logout">Logout</a></li>
             `:`
             <li><a href="/users/login">Login</a></li>
             <li><a href="/users/signup">Sign Up</a></li>
             `}
-        </ul>
+        </ul> -->
     </nav>
     <h1 class="container">${title}</h1>
     <main class="container">${partial}</main>

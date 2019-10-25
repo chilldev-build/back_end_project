@@ -1,15 +1,4 @@
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Express Demo | ${title}</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"/>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.js"integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="crossorigin="anonymous"></script>
-        <link rel ="stylesheet" href ="../public/stylesheets/style.css">
-    </head>
-    <body>
-     <nav class="nav">
+<nav class="nav">
          <div class="logo"></div>
          <ul class="nav-list">
              <li><p>Mulk Abduladi</p></li>
@@ -26,10 +15,12 @@
      </nav>
      <div class="timesheet">
          <div class="timesheet-form">
-             <form action="" method="post">
-               <button type="button" name="starttime">Clock In</button>
-               <button type="button" name="endtime">Clock Out</button>
-               <!-- Will need to add  a submit button <input type="submit" value="Submit"> -->
+             <form  name="ClockIn "action="/add" method="POST">
+                <label>
+                        StartTime
+                        <input type="text" name="starttime" aria-placeholder="12:45"/>
+                    </label>
+                    <button type="submit">Send Time</button>
              </form>
          </div>
      </div>
@@ -38,7 +29,4 @@
                 console.log("this occured");
                 $("#navButton").toggleClass("nav-desktop");
             });
-        </script>
-    </body>
-    </html>
-</html>
+</script>

@@ -1,6 +1,6 @@
 const express = require('express');
-const router = express.Router(),
-timeModel = require("../models/timepunch_model");
+const router = express.Router();
+const timeModel = require("../models/timepunch_model");
 
 
 /* GET home page. */
@@ -30,7 +30,7 @@ router.get("/:time_id", async (req,res,next)=> {
 
   res.render("template",{
     locals:{ 
-      title: 'This is the Time app',
+      title: '',
       timedata: theTime,
       isLoggedIn: req.session.is_logged_in
       
@@ -41,13 +41,14 @@ router.get("/:time_id", async (req,res,next)=> {
   });
 });
 
-router.post("/time", async (req,res) =>{
-     
-  const {starttime} = req.body;
-  const startTimeInstance = new timeModel(starttime);
-  const employeeStart = await startTimeInstance.addStartTime();
-  console.log(employeeStart);
-
-})
+router.post("/add", async (req, res) =>{
+  let { starttime } = req.body;
+  console.log(req.body);
+  const time_Instance = new timeModel(starttime);
+  const timeIn = await time_Instance.addStartTime();
+  console.log("this is a test", timeIn);
+  
+  
+});
 
 module.exports = router;
