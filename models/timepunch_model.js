@@ -1,13 +1,13 @@
 const db = require('./conn');
 
 class TimeSheet{
-    constructor(starttime,endtime, id,eid,firstname,lastname){
-        this.starttime = starttime;
-        this.endtime = endtime; 
+    constructor( id, eeid, starttime, endtime, active){
         this.id = id;
-        this.eid = eid;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.eeid = eeid; 
+        this.starttime = starttime;
+        this.starttime = starttime
+        this.endtime = endtime
+        this.active = active;
         
     }
 
@@ -37,7 +37,7 @@ class TimeSheet{
     }
     async addStartTime(){
         try{
-            const response = await db.result(`insert into time_punch (starttime) Values ( '${this.starttime}');`)
+            const response = await db.result(`insert into time_punch (eeid, starttime) Values ( 10 , '${this.starttime}');`)
             console.log(response)
             return response;
         }
@@ -48,7 +48,13 @@ class TimeSheet{
     async addEndTime(){
         console.log("this is endtime");
         try{
-        const response = await db.result(`insert into time_punch(endtime) Values ( '${this.endtime}');`)
+         const response = await db.result(
+            `UPDATE time_punch SET endtime = '${this.endtime}' 
+            WHERE id = (select id from time_punch where eeid = '10' 
+            and endtime isnull and starttime >
+            '2019-10-25 12:15:00')
+             RETURNING endtime;`)
+        /* const response = await db.result(`insert into time_punch(endtime) Values ( '${this.endtime}');`) */
         
         console.log(response)
         return response;
