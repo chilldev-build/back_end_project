@@ -49,6 +49,14 @@ router.get("/:time_id", async (req,res,next)=> {
   starttime = moment().format("YYYY-M-D  H:m:ss")
   const time_Instance = new timeModel(null, null, starttime, null, null);
   const timeIn = await time_Instance.addStartTime();
+
+  if(timeIn.rowCount !== 1){
+    res.sendStatus(500);
+  }else{
+    res.redirect("/time");
+  }
+
+
   
 
   
@@ -65,6 +73,12 @@ router.post("/add_timeOut", async (req, res) =>{
   console.log("this is the endtime ",endtime);
   const time_InstanceOut = new timeModel(null, null, null, endtime, null);
   const timeOut = await time_InstanceOut.addEndTime(); 
+
+  if(timeOut.rowCount !== 1){
+    res.sendStatus(500);
+  }else{
+    res.redirect("/time");
+  }
 
   
 
