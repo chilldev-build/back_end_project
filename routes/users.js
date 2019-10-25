@@ -54,7 +54,7 @@ router.post("/login", async (req,res,next)=>{
     req.session.firstname = firstname;
     req.session.lastname= lastname;
     req.session.t_id = id;
-    res.status(200).redirect("/");
+    res.status(200).redirect("/me");
   }else {
     res.sendStatus(401);
   }
@@ -72,7 +72,7 @@ router.post("/signup", async (req,res,next)=>{
   const employee = new UserModel(firstname, lastname, eid, hash);
 
   const addEmployee = await employee.save();
-  console.log("Was user added? ", addEmployee.id);
+  console.log("Was user added? ", addEmployee);
 
   if(addEmployee){
     res.status(200).redirect("/users/login");

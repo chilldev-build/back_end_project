@@ -32,6 +32,16 @@ CREATE TABLE employee (
     password constCHAR(20)
 );
 
+CREATE TABLE team(
+    id SERIAL PRIMARY KEY,
+    employee text,
+    time_id INT REFERENCES time_punch(id),
+    lastworkedon text,
+    activity VARCHAR,
+    totalhoursperweek VARCHAR
+
+);
+
 
 
 
