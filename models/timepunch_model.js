@@ -35,47 +35,28 @@ class TimeSheet{
         }
 
     }
-     async addStartTime(){
+    async addStartTime(){
         try{
-            const response = await db.result(
-                `insert into time_punch
-                 ( starttime, 
-                    endtime,
-                     worktype, 
-                     hours, 
-                     week) 
-                   values 
-                   ( '${this.starttime}', 
-                    '2016-06-22 19:10:25-07', 
-                    'eco-centric', 
-                    '20.5', '20.5');`
-            )
+            const response = await db.result(`insert into time_punch (starttime) Values ( '${this.starttime}');`)
+            console.log(response)
             return response;
         }
         catch(err){
             return err.message; 
         }
-    }
+}
     async addEndTime(){
         console.log("this is endtime");
-
-       try{
-        const response = await db.result(
-            `insert into time_punch
-            ( starttime, endtime,
-            worktype, hours, week) 
-            values 
-            ( '2016-06-22 19:10:25-07', '${this.endtime}', 'eco-centric', 
-             '20.5', '20.5');`
-        )
+        try{
+        const response = await db.result(`insert into time_punch(endtime) Values ( '${this.endtime}');`)
+        
         console.log(response)
         return response;
-        
-       }
-       catch(err){
-           return err.message
-       }
     }
+    catch(err){
+        return err.message
+    }
+}
     
 }
 

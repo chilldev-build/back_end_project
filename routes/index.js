@@ -47,9 +47,10 @@ router.get("/:time_id", async (req,res,next)=> {
  router.post("/add", async (req, res) =>{
   let { starttime } = req.body;
   starttime = moment().format("YYYY-M-D  H:m:ss")
-  const time_Instance = new timeModel(starttime);
+  const time_Instance = new timeModel(starttime, null, null, null ,null ,null );
   const timeIn = await time_Instance.addStartTime();
 }); 
+
 
 /* This will input the EndTime  */
 
