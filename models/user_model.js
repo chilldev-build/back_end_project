@@ -39,7 +39,7 @@ class Employee{
     async save(){
         try{
             const response = await db.one(
-                `INSERT INTO users(eid,firstname, lastname,password) VALUES ($1,$2,$3,$4) RETURNING id;`,
+                `INSERT INTO employee(eid,firstname, lastname,password) VALUES ($1,$2,$3,$4) RETURNING id;`,
                     [   this.eid,
                         this.firstname,
                         this.lastname,
