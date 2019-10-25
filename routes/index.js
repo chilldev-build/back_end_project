@@ -42,22 +42,27 @@ router.get("/:time_id", async (req,res,next)=> {
   });
 });
 
-router.post("/add", async (req, res) =>{
+/* This will input the startTime  */
+
+ router.post("/add", async (req, res) =>{
   let { starttime } = req.body;
   starttime = moment().format("YYYY-M-D  H:m:ss")
   const time_Instance = new timeModel(starttime);
   const timeIn = await time_Instance.addStartTime();
-  console.log(timeIn)
- 
- 
- 
-  /*  let { starttime } = req.body;
-  console.log(req.body);
-  const time_Instance = new timeModel(starttime);
-  const timeIn = await time_Instance.addStartTime();
-  console.log("this is a test", timeIn); */
-  
-  
+}); 
+
+/* This will input the EndTime  */
+
+router.post("/add_timeOut", async (req, res) =>{
+   let { endtime } = req.body;
+   console.log("this is the endtime", endtime);
+  endtime = moment().format("YYYY-M-D  H:m:ss")
+  console.log("this is the endtime ",endtime);
+  const time_InstanceOut = new timeModel(null,endtime, null, null, null, null);
+  const timeOut = await time_InstanceOut.addEndTime(); 
+
 });
 
 module.exports = router;
+
+

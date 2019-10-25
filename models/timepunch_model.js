@@ -1,13 +1,14 @@
 const db = require('./conn');
 
 class TimeSheet{
-    constructor(starttime , id,eid,firstname,lastname,  endtime){
+    constructor(starttime,endtime, id,eid,firstname,lastname){
         this.starttime = starttime;
+        this.endtime = endtime; 
         this.id = id;
         this.eid = eid;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.endtime = endtime; 
+        
     }
 
     static async getAll(){
@@ -54,6 +55,26 @@ class TimeSheet{
         catch(err){
             return err.message; 
         }
+    }
+    async addEndTime(){
+        console.log("this is endtime");
+
+       try{
+        const response = await db.result(
+            `insert into time_punch
+            ( starttime, endtime,
+            worktype, hours, week) 
+            values 
+            ( '2016-06-22 19:10:25-07', '${this.endtime}', 'eco-centric', 
+             '20.5', '20.5');`
+        )
+        console.log(response)
+        return response;
+        
+       }
+       catch(err){
+           return err.message
+       }
     }
     
 }
