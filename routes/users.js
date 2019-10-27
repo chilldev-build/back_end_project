@@ -9,7 +9,7 @@ router.get('/login', async (req, res, next)=> {
 
   res.render('template', {
     locals:{ 
-      title: 'Login',
+      title: '',
       isLoggedIn: req.session.is_logged_in
     
      },
@@ -29,7 +29,7 @@ router.get("/signup", async (req,res,next)=>{
 
   res.render('template', {
     locals:{ 
-      title: 'Sign Up',
+      title: '',
       isLoggedIn: req.session.is_logged_in
      },
       partials:{
