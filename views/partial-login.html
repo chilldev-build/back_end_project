@@ -1,9 +1,40 @@
-<form action = "/users/login" method="POST"> 
-    <label> Employee ID 
-        <input type ="text" aria-placeholder="Employee ID" name ="eid">
-    </label>
-    <label> Password
-            <input type ="password" aria-placeholder="Password" name ="password">
-        </label>
-    <button type ="submit"> Login </button> 
-</form>
+<!doctype html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>TimeSheet App | ${title}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel ="stylesheet" href ="../stylesheets/style.css">
+        <link rel= "stylesheet" href="../stylesheets/login.css">
+        <link rel= "stylesheet" href="../stylesheets/dashboard.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+<div class="row container-row">
+    <div class="col-sm-12 col-md-12 col-lg-5 container-left-side">
+            <img class="container-img img-fluid mx-auto" src="../images/marginalia-information-security.png">
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-7">
+           <div class="form">
+                <form class="form-login align-middle"  action = "/users/login" method="POST"> 
+                    <h1>Login In</h1>
+                    <label> Employee Id
+                        <input  type ="text"  aria-placeholder="Employee ID" name ="eid">
+                    </label>
+                    <label> Password
+                            <input type ="password" aria-placeholder="Password" name ="password">
+                        </label>
+                    <button type ="submit">Log In</button> 
+                </form>
+           </div>
+    </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="./javascripts/barchart.js"></script>	
+</body>
+</html>

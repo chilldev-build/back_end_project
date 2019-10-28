@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -80,3 +81,20 @@ body {
 
 }
 
+=======
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+ 
+}
+
+>>>>>>> bd942d3409d2c86e6fb0733f348bb7fb9f9a5d39

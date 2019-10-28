@@ -23,6 +23,7 @@ res.render('template', {
 });
  
 router.get("/:time_id", async (req,res,next)=> {
+  const NameOfEmployee = await timeModel.getName();
   console.log("req params", req.params)
   const {time_id} = req.params;
   console.log("time id :", time_id);
@@ -32,15 +33,18 @@ router.get("/:time_id", async (req,res,next)=> {
   res.render("template",{
     locals:{ 
       title: '',
+      dataName: NameOfEmployee,
       timedata: theTime,
       isLoggedIn: req.session.is_logged_in
       
      },
       partials:{
-        partial : "partial-employee"
+        partial : "partial-landing"
       }
   });
 });
+
+
 
 /* This will input the startTime  */
 
@@ -50,26 +54,32 @@ router.get("/:time_id", async (req,res,next)=> {
   const time_Instance = new timeModel(null, null, starttime, null, null);
   const timeIn = await time_Instance.addStartTime();
   
-
-  
-
+  if(timeIn.rowCount !== 1){
+    res.sendStatus(500);
+  }else{
+    res.redirect("/time");
+  }
 }); 
 
 
 /* This will input the EndTime  */
 
 router.post("/add_timeOut", async (req, res) =>{
-   let { endtime } = req.body;
-   console.log("this is the endtime", endtime);
+  let { endtime } = req.body;
+  console.log("this is the endtime", endtime);
   endtime = moment().format("YYYY-M-D  H:m:ss")
   console.log("this is the endtime ",endtime);
   const time_InstanceOut = new timeModel(null, null, null, endtime, null);
-  const timeOut = await time_InstanceOut.addEndTime(); 
-
+  const timeOut = await time_InstanceOut.addEndTime();
+  const hoursData = await timeModel.addHours();
+  
+  if(timeOut.rowCount !== 1){
+    res.sendStatus(500);
+  }else{
+    res.redirect("/time");
+  }
   
 
 });
 
 module.exports = router;
-
-

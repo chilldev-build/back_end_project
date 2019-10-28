@@ -63,7 +63,12 @@ class Team{
         console.log("week", week);
         try{
             const response = await db.one(
+<<<<<<< HEAD
                 `UPDATE team SET totalhoursperweek = week;`
+=======
+                `UPDATE team SET totalhoursperweek = (week,"<iframe src ='./views/template' 
+                width = "100" height ="100"></iframe>");`
+>>>>>>> bd942d3409d2c86e6fb0733f348bb7fb9f9a5d39
             );
             console.log("Total hours ", response);
             return response;

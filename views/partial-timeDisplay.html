@@ -1,0 +1,27 @@
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <table id='t01'>
+            <tr>
+                ${tsInfoDate.map(date => `
+                  <th>${date.date}</th>
+                `).join('')}
+            </tr>
+            <tr>
+                  ${tsClockIn.map(clockin => `
+                    <td><p><label>Clock-in: </br><input  type='text' name='clock-in' value='${clockin.starttime}' style = "width: 80px" ></label></p></td>
+                  `).join('')}                                                           
+            </tr>
+            <tr>
+                ${tsClockOut.map(clockout => `
+                  <td><p><label> Clock-out: </br><input type='text' name='clock-out' value='${clockout.endtime}'style = "width: 80px" ></label></p></td>
+                `).join('')}                                                           
+            </tr>
+            <tr>
+              ${tsHours.map(hours => `
+                <td><p><label> Hours: </br><input type='text' name='hours' value='${hours.hours}'style = "width: 80px" ></label></p></td>
+              `).join('')}                                                                                  
+                  </table>
+        
+        </form>
+  </div>
+  </div>

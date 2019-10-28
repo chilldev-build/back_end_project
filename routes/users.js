@@ -7,15 +7,12 @@ const UserModel = require("../models/user_model");
 /* GET users listing. */
 router.get('/login', async (req, res, next)=> {
 
-  res.render('template', {
+  res.render('partial-login', {
     locals:{ 
-      title: 'Login',
+      title: '',
       isLoggedIn: req.session.is_logged_in
     
      },
-      partials:{
-        partial : "partial-login"
-      }
     });
   
 });
@@ -27,14 +24,11 @@ router.get("/logout", (req, res, next)=> {
 
 router.get("/signup", async (req,res,next)=>{
 
-  res.render('template', {
+  res.render('partial-signup', {
     locals:{ 
-      title: 'Sign Up',
+      title: '',
       isLoggedIn: req.session.is_logged_in
-     },
-      partials:{
-        partial : "partial-signup"
-      }
+     }
     });
 });
 
