@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const timeDisplayModel = require("../models/timeDisplay_model");
+const timeModel = require('../models/timepunch_model');
 const moment = require('moment');
 
 router.get('/test', async (req, res, next) => {
-    const tsInfo = await timeDisplayModel.getTimeById('10');
+    const NameOfEmployee = await timeModel.getName();
+    const tsInfo = await timeDisplayModel.getTimeById('1');
     
     let tsInfoDate = [];
     tsInfo.forEach((item) => {
@@ -36,12 +38,14 @@ router.get('/test', async (req, res, next) => {
     
     res.render('template', {
       locals:{ 
-        title: 'Chilldev',
+        title: '',
         isLoggedIn: req.session.is_logged_in,
         tsInfoDate: tsInfoDate,
         tsClockIn: tsClockIn,
         tsClockOut: tsClockOut,
-        tsHours: tsHours
+        tsHours: tsHours,
+        dataName: NameOfEmployee,
+
        },
         partials:{
           partial : 'partial-timeDisplay',

@@ -23,6 +23,7 @@ res.render('template', {
 });
  
 router.get("/:time_id", async (req,res,next)=> {
+  const NameOfEmployee = await timeModel.getName();
   console.log("req params", req.params)
   const {time_id} = req.params;
   console.log("time id :", time_id);
@@ -32,6 +33,7 @@ router.get("/:time_id", async (req,res,next)=> {
   res.render("template",{
     locals:{ 
       title: '',
+      dataName: NameOfEmployee,
       timedata: theTime,
       isLoggedIn: req.session.is_logged_in
       
@@ -44,7 +46,6 @@ router.get("/:time_id", async (req,res,next)=> {
 
 
 
-
 /* This will input the startTime  */
 
  router.post("/add", async (req, res) =>{
@@ -52,7 +53,12 @@ router.get("/:time_id", async (req,res,next)=> {
   starttime = moment().format("YYYY-M-D  H:m:ss")
   const time_Instance = new timeModel(null, null, starttime, null, null);
   const timeIn = await time_Instance.addStartTime();
-
+  
+  if(timeIn.rowCount !== 1){
+    res.sendStatus(500);
+  }else{
+    res.redirect("/time");
+  }
 }); 
 
 
@@ -67,6 +73,11 @@ router.post("/add_timeOut", async (req, res) =>{
   const timeOut = await time_InstanceOut.addEndTime();
   const hoursData = await timeModel.addHours();
   
+  if(timeOut.rowCount !== 1){
+    res.sendStatus(500);
+  }else{
+    res.redirect("/time");
+  }
   
 
 });

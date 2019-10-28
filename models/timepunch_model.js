@@ -42,7 +42,7 @@ class TimeSheet{
     }
     async addStartTime(){
         try{
-            const response = await db.result(`insert into time_punch (eeid, starttime) Values ( 10 , '${this.starttime}');`)
+            const response = await db.result(`insert into time_punch (eeid, starttime) Values ( 1 , '${this.starttime}');`)
             console.log(response)
             return response;
         }
@@ -55,7 +55,7 @@ class TimeSheet{
         try{
          const response = await db.result(
             `UPDATE time_punch SET endtime = '${this.endtime}' 
-            WHERE id = (select id from time_punch where eeid = '10' 
+            WHERE id = (select id from time_punch where eeid = '1' 
             and endtime isnull and starttime >
             '2019-10-25 12:15:00')
              RETURNING endtime;`)
@@ -72,12 +72,21 @@ class TimeSheet{
     static async addHours(){
         try{
             const response = await db.result(`update time_punch set hours = (select endtime-starttime as hours from time_punch where id =  (select max(id) from time_punch where eeid ='10')) where id = (select max(id) from
-            time_punch where eeid = '10') RETURNING ID;`)
+            time_punch where eeid = '1') RETURNING ID;`)
             console.log(response)
             return response;
         }
         catch(err){
             return err.message; 
+        }
+    }
+
+    static async getName(){
+        try{
+            const response = await db.any(`select firstname, lastname from employee where id=1;`)
+            return response;
+        }catch(err){
+            return error.message
         }
     }
 
