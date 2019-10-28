@@ -39,7 +39,7 @@ router.get("/:time_id", async (req,res,next)=> {
       
      },
       partials:{
-        partial : "partial-employee"
+        partial : "partial-landing"
       }
   });
 });
