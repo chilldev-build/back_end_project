@@ -1,0 +1,109 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+ body {
+    overflow-x: hidden;
+  }
+  
+  #sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+  }
+  
+  .bg-blue{
+    background-color:  rgba(78, 163, 208, 0.336);
+  }
+
+  .list-group  .bg-blue{
+    background-color:  rgb(195, 224, 239);
+    color: #495561;
+    
+  }
+  .d-flex .bg-text{
+    font-weight: 500;
+  }
+
+  .bar1 , .bar2 , .bar3{
+    width: 30px;
+    height: 5px;
+    background-color:  #fefefffd;
+    margin: 6px 0;
+   
+  }
+  .nav-button{
+    background-color: #4EA2D0; 
+    border: none;
+    border-radius: 2px;
+  }
+  .timesheet{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    
+
+    
+  }
+  .timesheet button{
+    border: none;
+    width: 80%;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color:  #fefefffd;
+    border-radius: 5px;
+    margin-left: 1.2rem;
+  }
+
+  .list-group-item{
+    font-size: 1.2rem;
+    font-weight: 500;
+   
+  }
+
+  .clockIn{
+    background-color: #0C73AA;
+
+  }
+  .clockOut{
+
+    background-color: #FF3E06; 
+    
+  }
+
+  #sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+  }
+  
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+  
+  #page-content-wrapper {
+    min-width: 100vw;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+  
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+  }
+  

@@ -10,16 +10,21 @@ class TimeSheet{
         this.active = active;
         
     }
-
     static async getAll(){
-
         try{
-
             const response = await db.any(`SELECT * From time_punch;`);
             return response;
 
         }catch(error){
             return error.message;
+        }
+    }
+    static async getName(){
+        try{
+            const response = await db.any(`select firstname, lastname from employee where id=1 `)
+            return response;
+        }catch(err){
+            return error.message
         }
     }
 

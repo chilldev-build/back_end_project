@@ -1,31 +1,47 @@
-<nav class="nav">
-         <div class="logo"></div>
-         <ul class="nav-list">
-             <li><p>Mulk Abduladi</p></li>
-             <li><p>The Team</p></li>
-         </ul>
-      <div  id="navButton" class="nav-desktop">
-          <div class="nav-hamburger">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar2"></div>
-          </div>
-         
+<div class="d-flex" id="wrapper">
+    <div class="bg-blue border-right" id="sidebar-wrapper">   
+    ${dataName.map(person => `<div class="sidebar-heading bg-text">${person.firstname} ${person.lastname}</div>`).join('')}
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-blue">Home</a>
+        <a href="#" class="list-group-item list-group-item-action bg-blue">Team</a>
+        <a href="#" class="list-group-item list-group-item-action bg-blue">TimeSheet</a>
+        <a href="#" class="list-group-item list-group-item-action bg-blue">Log Out</a>
       </div>
-     </nav>
-     <div class="timesheet">
-         <div class="timesheet-form">
-             <form  name="Clock "action="/add" method="POST">
-                    <button type="submit" name="starttime">Clock In</button>
-             </form>
-             <form  name="Clock "action="/add_timeOut" method="POST">
-                <button type="submit" name="endtime">Clock Out</button>
-         </form>
-         </div>
-     </div>
-     <script>
-            $("#navButton").click(function(){
-                console.log("this occured");
-                $("#navButton").toggleClass("nav-desktop");
-            });
-</script>
+      <div class="timesheet">
+          <form  name="Clock "action="/add" method="POST">
+                <button  class="clockIn" type="submit" name="starttime">Clock In</button>
+          </form>
+          <form  name="Clock "action="/add_timeOut" method="POST">
+            <button class="clockOut"type="submit" name="endtime">Clock Out</button>
+          </form>
+</div>
+    </div>
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-blue border-bottom">
+        <button class="nav-button" id="menu-toggle">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="container-fluid">
+    </div>
+    </div>
+    </div>
+  </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+    
