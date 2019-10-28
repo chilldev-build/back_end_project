@@ -64,6 +64,18 @@ class TimeSheet{
     }
 }
     
+    static async addHours(){
+        try{
+            const response = await db.result(`update time_punch set hours = (select endtime-starttime as hours from time_punch where id =  (select max(id) from time_punch where eeid ='10')) where id = (select max(id) from
+            time_punch where eeid = '10') RETURNING ID;`)
+            console.log(response)
+            return response;
+        }
+        catch(err){
+            return err.message; 
+        }
+    }
+
 }
 
 
