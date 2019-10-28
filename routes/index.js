@@ -21,20 +21,18 @@ res.render('template', {
     }
    });
 });
- 
-router.get("/:time_id", async (req,res,next)=> {
-  console.log("req params", req.params)
-  const {time_id} = req.params;
-  console.log("time id :", time_id);
-  const theTime = await timeModel.getById(time_id);
-  console.log("the Time data is: ", theTime);
 
+router.get("/:time_id", async (req,res,next)=> {
+  const NameOfEmployee = await timeModel.getName();
+  console.log("Employee Name:", NameOfEmployee);
+  const {time_id} = req.params;
+  const theTime = await timeModel.getById(time_id);
   res.render("template",{
     locals:{ 
       title: '',
+      dataName: NameOfEmployee,
       timedata: theTime,
-      isLoggedIn: req.session.is_logged_in
-      
+      isLoggedIn: req.session.is_logged_in,
      },
       partials:{
         partial : "partial-employee"
@@ -55,12 +53,6 @@ router.get("/:time_id", async (req,res,next)=> {
   }else{
     res.redirect("/time");
   }
-
-
-  
-
-  
-
 }); 
 
 
