@@ -17,7 +17,7 @@ res.render('template', {
     employeeName: req.session.firstname
    },
     partials:{
-      partial : "partial-index"
+      partial : "partial-chilldev"
     }
    });
 });
@@ -42,6 +42,9 @@ router.get("/:time_id", async (req,res,next)=> {
   });
 });
 
+
+
+
 /* This will input the startTime  */
 
  router.post("/add", async (req, res) =>{
@@ -49,9 +52,6 @@ router.get("/:time_id", async (req,res,next)=> {
   starttime = moment().format("YYYY-M-D  H:m:ss")
   const time_Instance = new timeModel(null, null, starttime, null, null);
   const timeIn = await time_Instance.addStartTime();
-  
-
-  
 
 }); 
 

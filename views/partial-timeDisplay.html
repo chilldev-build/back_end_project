@@ -1,0 +1,43 @@
+<table id='t01'>
+    <tr>
+        ${tsInfoDate.map(date => `
+          <th>${date.date}</th>
+        `).join('')}
+    </tr>
+    <tr>
+          ${tsClockIn.map(clockin => `
+            <td><p>Clock-in: <input type='text' name='hours' value='${clockin.starttime}'></p></td>
+          `).join('')}                                                           
+    </tr>
+    <tr>
+        ${tsClockOut.map(clockout => `
+          <td><p>Clock-out: <input type='text' name='hours' value='${clockout.endtime}'></p></td>
+        `).join('')}                                                           
+    </tr>
+
+            <tr>
+              <td>
+                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
+              </td>
+              <td>
+                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
+              </td>
+              <td>
+                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
+              </td>
+              <td>
+                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
+              </td>
+              <td>
+                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
+              </td>
+              <td>
+                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
+              </td>
+              <td>
+                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
+              </td>                                                            
+            </tr>                            
+          </table>
+
+</form>
