@@ -8,6 +8,7 @@ router.get('/', async (req,res,next)=>{
     const weekData =await teamModel.getAllweek();
     const activitynew = await teamModel.checkactivity();
     const totalhours = await teamModel.totalhours();
+    const save = await teamModel.save(activity);
 
     console.log("team Data", teamData);
 

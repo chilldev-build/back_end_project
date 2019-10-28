@@ -1,16 +1,113 @@
 <!doctype html>
 <html>
-
 <head>
 	<title>Bar Chart</title>
-	
+	<link rel="stylesheet" href="style1.css">
+	<link rel ="stylesheet" href ="../back_end_project/public/stylesheets/style.css">		
 </head>
 
 <body>
-	<canvas id="densityChart" width="200" height="100"></canvas>
-</body>
+		<nav class="nav">
+				<div class="logo"></div>
+				<ul class="nav-list">
+					<li><p>Mulk Abduladi</p></li>
+					<li><p>The Team</p></li>
+				</ul>
+				<div  id="navButton" class="nav-desktop">
+				<div class="nav-hamburger">
+					<div class="bar1"></div>
+					<div class="bar2"></div>
+					<div class="bar2"></div>
+				</div>
+				
+				</div>
+				 </nav>
+				 <div class="timesheet">
+					 <div class="timesheet-form">
+						 <form  name="Clock "action="/add" method="POST">
+								<button type="submit" name="starttime">Clock In</button>
+						 </form>
+						 <form  name="Clock "action="/add_timeOut" method="POST">
+							<button type="submit" name="endtime">Clock Out</button>
+					 </form>
+					 </div>
+				 </div>
+			
+	<section class="section">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+			
+		<form >
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Employee</th>
+						<th>Last Worked On</th>
+						<th>Activity</th>
+						<th>Total Hours per Week</th>
+					</tr>
+				</thead>
+				<tbody>
+					${teamdata.map(team => `
+					<tr>
+						<td class="team-name">${team.employee}</td> 
+						<td class="team-name">${team.lastworkedon}</td>
+						<td class="team-name">${activitynew}
+							</td>
+						<td class="team-name"><canvas id="myChart" width="15px" height="15px"></canvas>
+							<script>
+							var ctx = document.getElementById('myChart').getContext('2d');
+							var myChart = new Chart(ctx, {
+								type: 'bar',
+								data: {
+									labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+									datasets: [{
+										label: '# Days',
+										data: [20, 15, 30, 25, 7],
+										backgroundColor: [
+											'rgba(255, 99, 132, 0.2)',
+											'rgba(54, 162, 235, 0.2)',
+											'rgba(255, 206, 86, 0.2)',
+											'rgba(75, 192, 192, 0.2)',
+											'rgba(153, 102, 255, 0.2)',
+											'rgba(255, 159, 64, 0.2)'
+										],
+										borderColor: [
+											'rgba(255, 99, 132, 1)',
+											'rgba(54, 162, 235, 1)',
+											'rgba(255, 206, 86, 1)',
+											'rgba(75, 192, 192, 1)',
+											'rgba(153, 102, 255, 1)',
+											'rgba(255, 159, 64, 1)'
+										],
+										borderWidth: 1
+									}]
+								},
+								options: {
+									scales: {
+										yAxes: [{
+											ticks: {
+												beginAtZero: true
+											}
+										}]
+									}
+								}
+							});
+							</script>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit" class="button is-medium is-primary">Save</button>
+		</form>
+		
+	</section>
+	<!-- <script>
+			$('#navButton').click(function(){
+				console.log("this occured");
+				$("#navButton").toggleClass("nav-desktop");
+			});
+	</script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="scripts1.js"></script>
-	
+</body>	
 </html>
