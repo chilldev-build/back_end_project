@@ -4,7 +4,7 @@ const timeDisplayModel = require("../models/timeDisplay_model");
 const moment = require('moment');
 
 router.get('/test', async (req, res, next) => {
-    const tsInfo = await timeDisplayModel.getTimeById('1');
+    const tsInfo = await timeDisplayModel.getTimeById('10');
     
     let tsInfoDate = [];
     tsInfo.forEach((item) => {
@@ -24,14 +24,14 @@ router.get('/test', async (req, res, next) => {
     tsClockOut.push(newClockOut);
     })    
 
-    let tsDiffMath = [];
+    let tsHours = [];
     tsInfo.forEach((item) => {
-      let diffMath = {'diffHours': (item.endtime - item.starttime)};
+      let hoursDisplay = {'hours': item.hours }
       //let newDiff = {'hours': (moment((item.endtime - item.starttime)).format('h:mm'))} 
-    tsDiffMath.push(diffMath);
+    tsHours.push(hoursDisplay);
     })    
 
-    console.log('chilldev data is: ', tsDiffMath);
+    console.log('chilldev data is: ', tsInfo);
     
     
     res.render('template', {
@@ -40,7 +40,8 @@ router.get('/test', async (req, res, next) => {
         isLoggedIn: req.session.is_logged_in,
         tsInfoDate: tsInfoDate,
         tsClockIn: tsClockIn,
-        tsClockOut: tsClockOut
+        tsClockOut: tsClockOut,
+        tsHours: tsHours
        },
         partials:{
           partial : 'partial-timeDisplay',

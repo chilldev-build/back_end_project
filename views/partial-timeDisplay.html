@@ -6,38 +6,18 @@
     </tr>
     <tr>
           ${tsClockIn.map(clockin => `
-            <td><p>Clock-in: <input type='text' name='hours' value='${clockin.starttime}'></p></td>
+            <td><p><label>Clock-in: </br><input  type='text' name='clock-in' value='${clockin.starttime}' style = "width: 80px" ></label></p></td>
           `).join('')}                                                           
     </tr>
     <tr>
         ${tsClockOut.map(clockout => `
-          <td><p>Clock-out: <input type='text' name='hours' value='${clockout.endtime}'></p></td>
+          <td><p><label> Clock-out: </br><input type='text' name='clock-out' value='${clockout.endtime}'style = "width: 80px" ></label></p></td>
         `).join('')}                                                           
     </tr>
-
-            <tr>
-              <td>
-                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
-              </td>
-              <td>
-                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
-              </td>
-              <td>
-                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
-              </td>
-              <td>
-                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
-              </td>
-              <td>
-                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
-              </td>
-              <td>
-                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
-              </td>
-              <td>
-                <p>Total Hours: <input type='text' name='hours' value='8.05' readonly></p>
-              </td>                                                            
-            </tr>                            
+    <tr>
+      ${tsHours.map(hours => `
+        <td><p><label> Hours: </br><input type='text' name='hours' value='${hours.hours}'style = "width: 80px" ></label></p></td>
+      `).join('')}                                                                                  
           </table>
 
 </form>
