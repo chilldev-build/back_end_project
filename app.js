@@ -12,6 +12,7 @@ require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const timeDisplayRouter = require('./routes/timeDisplay');
 const teamRouter = require('./routes/team_router');
 const chartRouter = require('./routes/teamchart_router');
 
@@ -45,7 +46,9 @@ app.use(function(req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/timeDisplay', timeDisplayRouter);
 app.use('/team',teamRouter);
 app.use('/me',chartRouter);
+
 
 module.exports = app;
