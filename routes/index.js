@@ -57,7 +57,7 @@ const moment = require('moment');
   if(timeIn.rowCount !== 1){
     res.sendStatus(500);
   }else{
-    res.redirect("/timesheet");
+    res.redirect("/timesheet/timesheet");
   }
 }); 
 
@@ -76,7 +76,7 @@ router.post("/add_timeOut", async (req, res) =>{
   if(timeOut.rowCount !== 1){
     res.sendStatus(500);
   }else{
-    res.redirect("/timesheet");
+    res.redirect("/timesheet/timesheet");
   }
   
 
