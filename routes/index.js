@@ -4,45 +4,45 @@ const timeModel = require("../models/timepunch_model");
 const moment = require('moment');
 
 
-/* GET home page. */
-router.get('/', async function(req, res, next) {
-  const timeData = await timeModel.getAll();
-  console.log("Time data", timeData);
+// /* GET home page. */
+// router.get('/', async function(req, res, next) {
+//   const timeData = await timeModel.getAll();
+//   console.log("Time data", timeData);
 
-res.render('template', {
-  locals:{ 
-    title: 'Index Page',
-    timedata : timeData,
-    isLoggedIn: req.session.is_logged_in,
-    employeeName: req.session.firstname
-   },
-    partials:{
-      partial : "partial-index"
-    }
-   });
-});
+// res.render('template', {
+//   locals:{ 
+//     title: 'Index Page',
+//     timedata : timeData,
+//     isLoggedIn: req.session.is_logged_in,
+//     employeeName: req.session.firstname
+//    },
+//     partials:{
+//       partial : "partial-index"
+//     }
+//    });
+// });
  
-router.get("/:time_id", async (req,res,next)=> {
-  const NameOfEmployee = await timeModel.getName();
-  console.log("req params", req.params)
-  const {time_id} = req.params;
-  console.log("time id :", time_id);
-  const theTime = await timeModel.getById(time_id);
-  console.log("the Time data is: ", theTime);
+// router.get("/:time_id", async (req,res,next)=> {
+//   const NameOfEmployee = await timeModel.getName();
+//   console.log("req params", req.params)
+//   const {time_id} = req.params;
+//   console.log("time id :", time_id);
+//   const theTime = await timeModel.getById(time_id);
+//   console.log("the Time data is: ", theTime);
 
-  res.render("template",{
-    locals:{ 
-      title: '',
-      //dataName: NameOfEmployee,
-      timedata: theTime,
-      isLoggedIn: req.session.is_logged_in
+//   res.render("template",{
+//     locals:{ 
+//       title: '',
+//       dataName: NameOfEmployee,
+//       timedata: theTime,
+//       isLoggedIn: req.session.is_logged_in
       
-     },
-      partials:{
-        partial : "partial-landing"
-      }
-  });
-});
+//      },
+//       partials:{
+//         partial : "partial-landing"
+//       }
+//   });
+// });
 
 
 
@@ -57,7 +57,7 @@ router.get("/:time_id", async (req,res,next)=> {
   if(timeIn.rowCount !== 1){
     res.sendStatus(500);
   }else{
-    res.redirect("/time");
+    res.redirect("/timesheet/timesheet");
   }
 }); 
 
@@ -76,7 +76,7 @@ router.post("/add_timeOut", async (req, res) =>{
   if(timeOut.rowCount !== 1){
     res.sendStatus(500);
   }else{
-    res.redirect("/time");
+    res.redirect("/timesheet/timesheet");
   }
   
 

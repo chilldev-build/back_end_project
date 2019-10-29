@@ -28,7 +28,7 @@ router.post("/", async (req,res) => {
         
         teamModel.update(key,req.body[key]);
     }
-    res.status(200).redirect('/:{eid}');
+    res.status(200).redirect('/team');
     
 });
 

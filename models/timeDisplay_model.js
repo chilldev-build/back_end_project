@@ -14,8 +14,8 @@ class Time{
         try{
 
             const response = await db.any(`
-            SELECT starttime, endtime, cast(extract(minutes from hours)/60 + extract(hours from hours) as float) as hours
-             From time_punch WHERE eeid = $1 and starttime > '2019-10-21 00:00:00';`, [id]);
+            SELECT starttime, endtime, round(cast(extract(minutes from hours)/60 + extract(hours from hours) as numeric),2) as hours 
+            From time_punch WHERE eeid = $1 and starttime > '2019-10-21 00:00:00';`, [id]);
             // console.log("response :", response);
             return response;
 
