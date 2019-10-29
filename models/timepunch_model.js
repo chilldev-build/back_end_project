@@ -40,9 +40,10 @@ class TimeSheet{
         }
 
     }
-    async addStartTime(){
+    async addStartTime(id){
         try{
-            const response = await db.result(`insert into time_punch (eeid, starttime) Values ( 1 , '${this.starttime}');`)
+            const response = await db.result(`
+            insert into time_punch (eeid, starttime) Values ( $1 , '${this.starttime}');`,[id])
             console.log(response)
             return response;
         }
@@ -50,15 +51,17 @@ class TimeSheet{
             return err.message; 
         }
 }
-    async addEndTime(){
+    async addEndTime(id){
         console.log("this is endtime");
         try{
          const response = await db.result(
             `UPDATE time_punch SET endtime = '${this.endtime}' 
-            WHERE id = (select id from time_punch where eeid = '1' 
+            WHERE id = (select id from time_punch where eeid = '$1' 
             and endtime isnull and starttime >
             '2019-10-25 12:15:00')
-             RETURNING endtime;`)
+             RETURNING endtime;`,[
+                 id
+             ])
         /* const response = await db.result(`insert into time_punch(endtime) Values ( '${this.endtime}');`) */
         
         console.log(response)
@@ -69,10 +72,12 @@ class TimeSheet{
     }
 }
     
-    static async addHours(){
+    static async addHours(id){
         try{
-            const response = await db.result(`update time_punch set hours = (select endtime-starttime as hours from time_punch where id =  (select max(id) from time_punch where eeid ='10')) where id = (select max(id) from
-            time_punch where eeid = '1') RETURNING ID;`)
+            const response = await db.result(`
+            update time_punch set hours = (select endtime-starttime as hours from time_punch 
+            where id =  (select max(id) from time_punch where eeid ='$1')) where id = (select max(id) from
+            time_punch where eeid = '$2') RETURNING ID;`,[id, id])
             console.log(response)
             return response;
         }

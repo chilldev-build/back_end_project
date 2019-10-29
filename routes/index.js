@@ -52,7 +52,7 @@ const moment = require('moment');
   let { starttime } = req.body;
   starttime = moment().format("YYYY-M-D  H:m:ss")
   const time_Instance = new timeModel(null, null, starttime, null, null);
-  const timeIn = await time_Instance.addStartTime();
+  const timeIn = await time_Instance.addStartTime(req.session.t_id);
   
   if(timeIn.rowCount !== 1){
     res.sendStatus(500);
@@ -70,8 +70,8 @@ router.post("/add_timeOut", async (req, res) =>{
   endtime = moment().format("YYYY-M-D  H:m:ss")
   console.log("this is the endtime ",endtime);
   const time_InstanceOut = new timeModel(null, null, null, endtime, null);
-  const timeOut = await time_InstanceOut.addEndTime();
-  const hoursData = await timeModel.addHours();
+  const timeOut = await time_InstanceOut.addEndTime(req.session.t_id);
+  const hoursData = await timeModel.addHours(req.session.t_id);
   
   if(timeOut.rowCount !== 1){
     res.sendStatus(500);

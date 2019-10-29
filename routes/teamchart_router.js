@@ -7,13 +7,16 @@ router.get('/', async (req,res,next)=>{
     const teamchartData = await teamchartModel.getAllweek();
     
     
-    console.log("team Data", teamchartData);
+    //console.log("team Data", req.session);
 
     res.render('template', { 
         locals:{
           title: 'Team',
           chartdata: teamchartData,
-          isLoggedIn: req.session.is_logged_in
+          isLoggedIn: req.session.is_logged_in,
+          dataFName: req.session.firstname,
+          dataLName: req.session.lastname
+          
         },
         partials:{
           partial:"partial-landing"

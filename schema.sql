@@ -12,8 +12,8 @@ CREATE TABLE employee (
 CREATE TABLE time_punch (
     id SERIAL PRIMARY KEY,
     eeid INT NOT NULL REFERENCES employee(id) on DELETE CASCADE,
-    starttime timestamp without time zone NOT NULL,
-    endtime timestamp without time zone NOT NULL,
+    starttime timestamp,
+    endtime timestamp,
     hours time,
     week INT
 );

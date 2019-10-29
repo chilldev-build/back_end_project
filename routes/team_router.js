@@ -18,7 +18,9 @@ router.get('/', async (req,res,next)=>{
           weekdata: weekData,
           activitynew :activitynew,
           totalhours : totalhours,
-          isLoggedIn: req.session.is_logged_in
+          isLoggedIn: req.session.is_logged_in,
+          dataFName: req.session.firstname,
+          dataLName: req.session.lastname
         },
         partials:{
           partial:"partial-team"
