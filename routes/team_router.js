@@ -7,20 +7,17 @@ router.get('/', async (req,res,next)=>{
     const teamData = await teamModel.getAllteamdata();
     const weekData =await teamModel.getAllweek();
     const activitynew = await teamModel.checkactivity();
-    //const totalhours = await teamModel.totalhours();
-    const save = await teamModel.save();
+    const totalhours = await teamModel.totalhours();
 
     console.log("team Data", teamData);
-    console.log("activitynew", activitynew);
 
     res.render('template', { 
         locals:{
-          title: '',
+          title: 'Team',
           teamdata: teamData,
           weekdata: weekData,
           activitynew :activitynew,
-          //totalhours : totalhours,
-          save:save,
+          totalhours : totalhours,
           isLoggedIn: req.session.is_logged_in
         },
         partials:{
