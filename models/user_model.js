@@ -18,7 +18,7 @@ class Employee{
     async login(){
         console.log("this is the login infor:", this);
         try{
-            const response = await db.one(`SELECT  firstname, lastname,eid, password FROM employee WHERE eid = $1;`,
+            const response = await db.one(`SELECT  id, firstname, lastname, eid, password FROM employee WHERE eid = $1;`,
                                     [this.eid]);
             
             const isValid = this.checkPassword(response.password);
