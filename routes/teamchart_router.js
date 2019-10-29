@@ -4,14 +4,14 @@ const express = require('express'),
 
 router.get('/', async (req,res,next)=>{
 
-    const teamchartData = await teamchartModel.getAllweek();
+    const teamchartData = await teamchartModel.getAllweek(req.session.t_id);
     
     
     //console.log("team Data", req.session);
 
     res.render('template', { 
         locals:{
-          title: 'Team',
+          title: '',
           chartdata: teamchartData,
           isLoggedIn: req.session.is_logged_in,
           dataFName: req.session.firstname,
@@ -36,3 +36,4 @@ router.post("/", async (req,res) => {
 });
 
 module.exports = router;
+
