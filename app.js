@@ -44,9 +44,9 @@ app.use(function(req, res, next) {
     return next();
 });
 
-//app.use('/', indexRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/', timeDisplayRouter);
+app.use('/timesheet', timeDisplayRouter);
 app.use('/team',teamRouter);
 app.use('/me',chartRouter);
 
