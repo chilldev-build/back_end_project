@@ -10,24 +10,12 @@ CREATE TABLE employee (
     lastname TEXT NOT NULL
 );
 CREATE TABLE time_punch (
-   id SERIAL PRIMARY KEY,
-   eeid INT NOT NULL REFERENCES employee(id) on DELETE CASCADE,
-   starttime timestamp without time zone NOT NULL,
-   endtime timestamp without time zone NOT NULL,
-   hours time,
-   week INT
-);
-
-CREATE TABLE team(
     id SERIAL PRIMARY KEY,
-    employee text,
-    time_id INT REFERENCES time_punch(id),
-    lastworkedon text,
-    activity VARCHAR,
-    totalhoursperweek VARCHAR
-
+    eeid INT NOT NULL REFERENCES employee(id) on DELETE CASCADE,
+    starttime timestamp without time zone NOT NULL,
+    endtime timestamp without time zone NOT NULL,
+    active boolean
 );
-
 INSERT INTO company (cid, name) VALUES
 ('GA1001', 'Coder Paradise'),
 ('GA1002', 'The Big Greek'),
@@ -49,6 +37,26 @@ INSERT INTO employee (eid, co_cid, firstname, lastname) VALUES
 ('6489', 'GA1005','Chris','Test1'),
 ('6490', 'GA1005','Chris','Test2'),
 ('6491', 'GA1005','Chris','Test3');
+INSERT INTO time_punch (eeid, starttime, endtime, active) VALUES
+(1, '2019-10-21 10:00:00', '2019-10-21 14:05:30',FALSE),
+(1, '2019-10-22 10:00:00', '2019-10-22 14:05:30',FALSE),
+(1, '2019-10-23 10:00:00', '2019-10-23 14:05:30',FALSE),
+(1, '2019-10-24 10:00:00', '2019-10-24 14:05:30',FALSE),
+(1, '2019-10-25 10:00:00', '2019-10-25 14:05:30',FALSE),
+(1, '2019-10-26 10:00:00', '2019-10-26 14:05:30',FALSE),
+(1, '2019-10-27 10:00:00', '2019-10-27 14:05:30',FALSE);
+
+
+CREATE TABLE team(
+    id SERIAL PRIMARY KEY,
+    employee text,
+    time_id INT REFERENCES time_punch(id),
+    lastworkedon text,
+    activity VARCHAR,
+    totalhoursperweek VARCHAR
+
+);
+
 
 
 

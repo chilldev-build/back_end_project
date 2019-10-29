@@ -84,7 +84,6 @@ class TimeSheet{
     static async getName(){
         try{
             const response = await db.any(`select firstname, lastname from employee where id=1;`)
-            console.log("getName", response);
             return response;
         }catch(err){
             return error.message

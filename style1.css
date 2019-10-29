@@ -1,98 +1,40 @@
-body {
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.25;
-}
-
-table {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.section {
-  font-size: 1.5em;
-  float : right;
-  padding: 0;
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: right;
-  margin-top:200px;
-  margin-right: 200px;
-}
-
-
-table tr {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  
-}
-thead th{
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-inline-start: 0;
-}
-
-table th,
-table td {
-  
-  text-align: center;
-  height: 100px;
-  width: 120px;
-}
-
-table th {
-  font-size: .85em;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-@media screen and (max-width: 600px) {
-  table {
-    border: 0;
-  }
-
-  table caption {
-    font-size: 1.3em;
+body{
+    font-family: 'Exo 2', sans-serif;
+    background:#eceff1;
   }
   
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    
-    position: absolute;
-    width: 1px;
-  }
   
-  table tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
+  h1{
+    color:white;
+    font-weight:900;
+    margin-top: 0;
+  }
+  h4{
+    color:white;
+  }
+  .winnersgraph{
+    width: 90%;
+    position: relative;
+    margin: 10px auto;
+    padding: 0;
+  }
+  #winners{
+    width: 100%;  
+  }
+  .winners-list{
     margin-bottom: 0;
+    padding: 40px 0;
   }
-  
-  table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .8em;
-    text-align: right;
+  .winners-list dt, .winners-list dd{
+    margin: 0;
   }
-  
-  table td::before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
-    content: attr(data-label);
-    float: right;
-    font-weight: bold;
-    text-transform: uppercase;
+  .winners-list dt{
+    color:white;
+    font-size:1.2em;
+    font-weight:400;
+    letter-spacing:0.05em;
   }
-  
-  table td:last-child {
-    border-bottom: 0;
+  .winners-list dd{
+    color:#78909c;
+    font-size:0.90em;
   }
-}
