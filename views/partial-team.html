@@ -1,72 +1,67 @@
 <section class="section">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <link rel ="stylesheet" href ="./stylesheets/team.css">
     <form >
         <table class="table">
             <thead>
                 <tr>
                     <th>Employee</th>
-                    <th>Last Worked On</th>
+                    <th>Company</th>
                     <th>Activity</th>
                     <th>Total Hours per Week</th>
                 </tr>
             </thead>
             <tbody>
-            ${teamdata.map(team => `
+            ${teamdata.map((team, i) => `
                 <tr>
-                    <td class="team-name">${team.employee}</td> 
+                    <td class="team-name">${team.employee}</td>
                     <td class="team-name">${team.lastworkedon}</td>
-                    <td class="team-name">${activitynew}
-                        </td>
-                    <td class="team-name"><canvas id="myChart" width="20%" height="20%"></canvas>
+                    <td class="team-name">${team.activity}</td>
+                    <td class="team-name">
+                        <canvas id="chart${i}" width="15px" height="15px" style width:15px; height:15px;padding:0;></canvas>
                         <script>
-                        var ctx = document.getElementById('myChart').getContext('2d');
-                        var myChart = new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-                                datasets: [{
-                                    label: '# Days',
-                                    data: [20, 15, 30, 25, 7],
-                                    backgroundColor: [
-                                        'rgba(255, 99, 132, 0.2)',
-                                        'rgba(54, 162, 235, 0.2)',
-                                        'rgba(255, 206, 86, 0.2)',
-                                        'rgba(75, 192, 192, 0.2)',
-                                        'rgba(153, 102, 255, 0.2)',
-                                        'rgba(255, 159, 64, 0.2)'
-                                    ],
-                                    borderColor: [
-                                        'rgba(255, 99, 132, 1)',
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)'
-                                    ],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    yAxes: [{
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
+                            var values = "${team.activity}";
+                                var firstChartData = {
+                                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                                    datasets: [{
+                                        label: '# Days',
+                                        data: values,
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 159, 64, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                                        borderWidth: 1
                                     }]
+                                };
+                            var myChart = new Chart(document.getElementById('chart${i}').getContext('2d'), {
+                                type: 'bar',
+                                data: firstChartData,
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                    }
                                 }
-                            }
-                        });
+                            });
                         </script>
                     </td>
                 </tr>
-            </tbody>
+            </tbody>`).join('')}
         </table>
-        <button type="submit" class="button is-medium is-primary">Save</button>
     </form>
-    
-</section>
-
-<!-- <td class="team-name">${totalhours}
-    `).join('')}
-</td> -->
+ </section>
