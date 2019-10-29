@@ -50,5 +50,11 @@ INSERT INTO employee (eid, co_cid, firstname, lastname) VALUES
 ('6490', 'GA1005','Chris','Test2'),
 ('6491', 'GA1005','Chris','Test3');
 
+INSERT INTO team (employee,lastworkedon) VALUES
+('Chris', 'Coder Paradise'),
+('Sirisha','The Big Greek'),
+('Mulk','Coder Paradise');
+
+
 
 

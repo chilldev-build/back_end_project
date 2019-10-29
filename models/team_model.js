@@ -80,7 +80,7 @@ class Team{
         while (index < activity.length) {
             try{
                 console.log(`Saving employe ID: ${index + 1} with activity of ${activity[index]}`);
-                response = await db.result(`UPDATE team SET activity = $1 WHERE id = $2;`, [activity[index], index ++]);
+                response = await db.result(`UPDATE team SET activity = $1 WHERE id = $2;`, [activity[index], index + 1]);
             
                 console.log("activity response11", response);
                 
