@@ -8,7 +8,7 @@
                 <thead>
                     <tr>
                         <th>Employee</th>
-                        <th>Last Worked On</th>
+                        <th>Company</th>
                         <th>Activity</th>
                         <th>Total Hours per Week</th>
                     </tr>
@@ -18,16 +18,17 @@
                     <tr>
                         <td class="team-name">${team.employee}</td> 
                         <td class="team-name">${team.lastworkedon}</td>
-                        <td class="team-name">${activitynew}</td>
+                        <td class="team-name">${team.activity}</td>
                         <td class="team-name">
-                            <canvas id="chart${i}" width="20%" height="20%"></canvas>
+                            <canvas id="chart${i}" width="15px" height="15px" style width:15px; height:15px;padding:0;></canvas>
     
                             <script>
+                                var values = "${team.activity}";
                                     var firstChartData = {
                                         labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
                                         datasets: [{
                                             label: '# Days',
-                                            data: [20, 15, 30, 25, 7],
+                                            data: values,
                                             backgroundColor: [
                                                 'rgba(255, 99, 132, 0.2)',
                                                 'rgba(54, 162, 235, 0.2)',

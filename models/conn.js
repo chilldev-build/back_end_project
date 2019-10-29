@@ -6,15 +6,8 @@ const pgp = require("pg-promise")({
 
 const options ={
     host: "localhost",
-<<<<<<< HEAD
     database: "backendproject"
-   
-=======
-    database: "backendproject",
-    user: "chilldev",
-    password: "password"
-
->>>>>>> bd942d3409d2c86e6fb0733f348bb7fb9f9a5d39
+    
 };
 
 const db = pgp(options);

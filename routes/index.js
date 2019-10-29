@@ -33,7 +33,7 @@ router.get("/:time_id", async (req,res,next)=> {
   res.render("template",{
     locals:{ 
       title: '',
-      dataName: NameOfEmployee,
+      //dataName: NameOfEmployee,
       timedata: theTime,
       isLoggedIn: req.session.is_logged_in
       
