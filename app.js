@@ -29,7 +29,7 @@ app.use(cookieParser());
 // app.use(chart());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-    store: new FIleStore(),
+    //store: new FIleStore(),
     secret: "get rad",
     resave: false,
     saveUninitialized: true,
@@ -46,7 +46,7 @@ app.use(function(req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/timeDisplay', timeDisplayRouter);
+app.use('/timesheet', timeDisplayRouter);
 app.use('/team',teamRouter);
 app.use('/me',chartRouter);
 

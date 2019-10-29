@@ -7,18 +7,19 @@
     <link rel ="stylesheet" href ="../stylesheets/style.css">
     <link rel= "stylesheet" href="../stylesheets/login.css">
     <link rel= "stylesheet" href="../stylesheets/dashboard.css">
+    <link rel= "stylesheet" href="../stylesheets/timesheet.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
    
     <div class="d-flex" id="wrapper">
         <div class="bg-blue border-right" id="sidebar-wrapper">   
-        ${dataName.map(person => `<div class="sidebar-heading bg-text">${person.firstname} ${person.lastname}</div>`).join('')}
+        <div class="sidebar-heading bg-text"> </div>
           <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action bg-blue">Home</a>
-            <a href="#" class="list-group-item list-group-item-action bg-blue">Team</a>
-            <a href="#" class="list-group-item list-group-item-action bg-blue">TimeSheet</a>
-            <a href="#" class="list-group-item list-group-item-action bg-blue">Log Out</a>
+            <a href="../me" class="list-group-item list-group-item-action bg-blue">Home</a>
+            <a href="../team" class="list-group-item list-group-item-action bg-blue">Team</a>
+            <a href="../timesheet" class="list-group-item list-group-item-action bg-blue">TimeSheet</a>
+            <a href="../users/signup" class="list-group-item list-group-item-action bg-blue">Log Out</a>
           </div>
           <div class="timesheet">
               <form  name="Clock "action="/add" method="POST">

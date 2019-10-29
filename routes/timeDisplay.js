@@ -4,7 +4,7 @@ const timeDisplayModel = require("../models/timeDisplay_model");
 const timeModel = require('../models/timepunch_model');
 const moment = require('moment');
 
-router.get('/test', async (req, res, next) => {
+router.get('/timesheet', async (req, res, next) => {
     const NameOfEmployee = await timeModel.getName();
     const tsInfo = await timeDisplayModel.getTimeById('1');
     
@@ -44,7 +44,9 @@ router.get('/test', async (req, res, next) => {
         tsClockIn: tsClockIn,
         tsClockOut: tsClockOut,
         tsHours: tsHours,
-        dataName: NameOfEmployee,
+        dataFName: req.session.firstname,
+        dataLName: req.session.lastname
+
 
        },
         partials:{

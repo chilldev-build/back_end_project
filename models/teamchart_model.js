@@ -13,8 +13,8 @@ class Team{
     static async getAllweek(){
 
         try{
-            const response = await db.one(`SELECT time_punch.week
-                                        FROM time_punch where time_punch.id = 1
+            const response = await db.one(`SELECT week
+                                        FROM time_punch where id = 1
                                         ;`
                             );
             console.log("Week data :", response);
@@ -28,3 +28,4 @@ class Team{
 }
 
 module.exports = Team;
+
