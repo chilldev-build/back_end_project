@@ -6,7 +6,7 @@ const moment = require('moment');
 
 router.get('/timesheet', async (req, res, next) => {
     const NameOfEmployee = await timeModel.getName();
-    const tsInfo = await timeDisplayModel.getTimeById('1');
+    const tsInfo = await timeDisplayModel.getTimeById(req.session.t_id);
     
     let tsInfoDate = [];
     tsInfo.forEach((item) => {
