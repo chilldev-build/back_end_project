@@ -44,11 +44,11 @@ app.use(function(req, res, next) {
     return next();
 });
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/timeDisplay', timeDisplayRouter);
 app.use('/team',teamRouter);
-app.use('/me',chartRouter);
+app.use('/:eid',chartRouter);
 
 
 module.exports = app;

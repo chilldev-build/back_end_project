@@ -34,7 +34,7 @@ router.get('/test', async (req, res, next) => {
     })    
 
     console.log('chilldev data is: ', tsInfo);
-    
+    console.log("dataName", NameOfEmployee);
     
     res.render('template', {
       locals:{ 
@@ -44,8 +44,7 @@ router.get('/test', async (req, res, next) => {
         tsClockIn: tsClockIn,
         tsClockOut: tsClockOut,
         tsHours: tsHours,
-        dataName: NameOfEmployee,
-
+       // dataName: NameOfEmployee
        },
         partials:{
           partial : 'partial-timeDisplay',

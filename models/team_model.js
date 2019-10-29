@@ -13,67 +13,89 @@ class Team{
     static async getAllweek(){
 
         try{
-            const response = await db.one(`SELECT time_punch.week
-                                        FROM time_punch where time_punch.id = 1
+            const response = await db.any(`SELECT time_punch.week
+                                        FROM time_punch where time_punch.id > 0
                                         ;`
                             );
             console.log("Week data :", response);
-            return response.week;
+            console.log("type", typeof response);
+            return response;
+            
 
         }catch(error){
             return error.message;
         }
 
     }
-
     static async checkactivity(){
-        let week =  await this.getAllweek();
-        console.log("week", week);
-        let activity = null
-        if(week>0 && week <= 10) {
-            activity = 25+'%';
-            console.log("activity", activity);
-            return activity;
-        }
-        if(week>10 && week <= 20) {
-            activity = 50+'%';
-            console.log("activity", activity);
-            return activity;
-        }
-        if(week>20 && week <= 30) {
-            activity = 75+'%';
-            console.log("activity", activity);
-                return activity;
-        }
-        if(week>30 && week <40) {
-            activity = 90+'%';
-            console.log("activity", activity);
-            return activity;
-        }
-        else{
-            return activity;
-        }
+        const week =  await this.getAllweek();
+        console.log("week1", week[0]);
+        console.log("week2", week[1]);
+        const activityList=[];
+        let activity;
+        week.forEach(item => {
+            console.log("item", item);
+            if(item.week>0 && item.week <= 10) {
+                activity = 25+'%';
+                console.log("activity", activity);
+                activityList.push(item.week);
+            }
+            if(item.week>=30 && item.week <= 39) {
+                activity = 40+'%';
+                console.log("activity", activity);
+                activityList.push(activity);
+            }
+            if(item.week>39) {
+                activity = 50+'%';
+                console.log("activity", activity);
+                activityList.push(activity);
+            }
+        });
+        console.log("activityList", activityList);
+        return activityList;
 }
 
-    static async totalhours(){
-        let week = await this.getAllweek();
-        console.log("week", week);
-        try{
-            const response = await db.one(
-                `UPDATE team SET totalhoursperweek = (week,"<iframe src ='./views/template' 
-                width = "100" height ="100"></iframe>");`
-            );
-            console.log("Total hours ", response);
+    
+    // static async totalhours(){
+    //     let week = await this.getAllweek();
+    //     console.log("week", week);
+    //     try{
+    //         const response = await db.one(
+    //             `UPDATE team SET totalhoursperweek = week;`
+    //         );
+    //         console.log("Total hours ", response);
+    //         return response;
+    //     }catch(err){
+    //         return err.message;
+    //     }
+
+
+    // }
+    static async save(){
+        console.log("inside sAVE");
+        const activity = await this.checkactivity();
+        console.log("activity sirisha:",activity);
+        let index = 0;
+        let response;
+        while (index < activity.length) {
+            try{
+                console.log(`Saving employe ID: ${index + 1} with activity of ${activity[index]}`);
+                response = await db.result(`UPDATE team SET activity = $1 WHERE id = $2;`, [activity[index], index ++]);
+            
+                console.log("activity response11", response);
+                
+            }catch(error){
+                return error.message;
+            }
+            index++;
             return response;
-        }catch(err){
-            return err.message;
         }
-
-
+        
+        
     }
-
-     static async getAllteamdata(){
-
+    
+    static async getAllteamdata(){
+        
         try{
             const response = await db.any(`SELECT team.employee,
                                         team.lastworkedon,
@@ -89,23 +111,6 @@ class Team{
         }catch(error){
             return error.message;
         }
-    }
-
-     static async save(activity){
-        console.log("activity:",activity);
-        try{
-            const response = await db.one(
-                `INSERT INTO team(activity) VALUES ($1) RETURNING id;`,
-                    [   
-                        activity
-                    ]
-            );
-           
-            return response;
-        }catch(err){
-            return err.message;
-        }
-       
     }
 }
 
