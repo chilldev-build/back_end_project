@@ -1,62 +1,102 @@
 <html>
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>TimeSheet App | ${title}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel ="stylesheet" href ="../stylesheets/style.css">
-    <link rel= "stylesheet" href="../stylesheets/login.css">
-    <link rel= "stylesheet" href="../stylesheets/dashboard.css">
-    <link rel= "stylesheet" href="../stylesheets/timesheet.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-   
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../stylesheets/style.css" />
+    <link rel="stylesheet" href="../stylesheets/login.css" />
+    <link rel="stylesheet" href="../stylesheets/dashboard.css" />
+    <link rel="stylesheet" href="../stylesheets/timesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <div class="d-flex" id="wrapper">
-        <div class="bg-blue border-right" id="sidebar-wrapper">   
+      <div class="bg-blue border-right" id="sidebar-wrapper">
         <div class="sidebar-heading bg-text">${dataFName} ${dataLName}</div>
-          <div class="list-group list-group-flush">
-            <a href="../me" class="list-group-item list-group-item-action bg-blue">Home</a>
-            <a href="../team" class="list-group-item list-group-item-action bg-blue">Team</a>
-            <a href="../timesheet/timesheet" class="list-group-item list-group-item-action bg-blue">TimeSheet</a>
-            <a href="../users/signup" class="list-group-item list-group-item-action bg-blue">Log Out</a>
-          </div>
-          <div class="timesheet">
-              <form  name="Clock "action="/add" method="POST">
-                    <button  class="clockIn" type="submit" name="starttime">Clock In</button>
-              </form>
-              <form  name="Clock "action="/add_timeOut" method="POST">
-                <button class="clockOut"type="submit" name="endtime">Clock Out</button>
-              </form>
-    </div>
+        <div class="list-group list-group-flush">
+          <a href="../me" class="list-group-item list-group-item-action bg-blue"
+            >Home</a
+          >
+          <a
+            href="../team"
+            class="list-group-item list-group-item-action bg-blue"
+            >Team</a
+          >
+          <a
+            href="../timesheet/timesheet"
+            class="list-group-item list-group-item-action bg-blue"
+            >TimeSheet</a
+          >
+          <a
+            href="../users/signup"
+            class="list-group-item list-group-item-action bg-blue"
+            >Log Out</a
+          >
         </div>
-        <div id="page-content-wrapper">
-          <nav class="navbar navbar-expand-lg navbar-light bg-blue border-bottom">
-            <button class="nav-button" id="menu-toggle">
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
+        <div class="timesheet">
+          <form name="Clock " action="/add" method="POST">
+            <button class="clockIn" type="submit" name="starttime">
+              Clock In ${isClockedIn}
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            </div>
-          </nav>
-          <div class="container-fluid">
-            <div class="container-fluid">
-                <main> <span class="">${title}</span>${partial}</main>
-        </div>
-        </div>
+          </form>
+          <form name="Clock " action="/add_timeOut" method="POST">
+            <button class="clockOut" type="submit" name="endtime">
+              Clock Out
+            </button>
+          </form>
         </div>
       </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-blue border-bottom">
+          <button class="nav-button" id="menu-toggle">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </button>
+          <div
+            class="collapse navbar-collapse"
+            id="navbarSupportedContent"
+          ></div>
+        </nav>
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <main><span class="">${title}</span>${partial}</main>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.js"
+      integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
     <script>
-            $("#menu-toggle").click(function(e) {
-              console.log("this happend");
-              e.preventDefault();
-              $("#wrapper").toggleClass("toggled");
-            });
-          </script>
-</body>
+      $("#menu-toggle").click(function(e) {
+        console.log("this happend");
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+  </body>
 </html>
